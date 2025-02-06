@@ -1,57 +1,60 @@
 package backends25.bookstore.domain;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity
 public class Book {
-
-    String title, author, publicationYear, isbn, price;
-
-    public Book() {
-        
+    @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
+    private long id;
+    private String title, author, isbn;
+    private double price;
+    private int year;
+    public long getId() {
+        return id;
     }
-
+    public void setId(long id) {
+        this.id = id;
+    }
     public String getTitle() {
         return title;
     }
-
-    public String getAuthor() {
-        return author;
-    }
-
-    public String getPublicationYear() {
-        return publicationYear;
-    }
-
-    public String getIsbn() {
-        return isbn;
-    }
-
-    public String getPrice() {
-        return price;
-    }
-
     public void setTitle(String title) {
         this.title = title;
     }
-
+    public String getAuthor() {
+        return author;
+    }
     public void setAuthor(String author) {
         this.author = author;
     }
-
-    public void setPublicationYear(String publicationYear) {
-        this.publicationYear = publicationYear;
+    public String getIsbn() {
+        return isbn;
     }
-
     public void setIsbn(String isbn) {
         this.isbn = isbn;
     }
-
-    public void setPrice(String price) {
+    public double getPrice() {
+        return price;
+    }
+    public void setPrice(double price) {
         this.price = price;
     }
-
+    public int getYear() {
+        return year;
+    }
+    public void setYear(int year) {
+        this.year = year;
+    }
     @Override
     public String toString() {
-        return "Book [title=" + title + ", author=" + author + ", publicationYear=" + publicationYear + ", isbn=" + isbn
-                + ", price=" + price + "]";
+        return "Book [id=" + id + ", title=" + title + ", author=" + author + ", isbn=" + isbn + ", price=" + price
+                + ", year=" + year + "]";
     }
 
+
 }
+
