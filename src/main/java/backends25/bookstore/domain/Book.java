@@ -13,6 +13,16 @@ public class Book {
     private String title, author, isbn;
     private double price;
     private int year;
+
+    
+    public Book(long id, String title, String author, String isbn, double price, int year) {
+        this.id = id;
+        this.title = title;
+        this.author = author;
+        this.isbn = isbn;
+        this.price = price;
+        this.year = year;
+    }
     public long getId() {
         return id;
     }
