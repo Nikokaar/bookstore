@@ -56,10 +56,10 @@ public class Book {
     public void setPrice(double price) {
         this.price = price;
     }
-    public int getYear() {
+    public int getPublicationYear() {
         return publicationYear;
     }
-    public void setYear(int year) {
+    public void setPublicationYear(int year) {
         this.publicationYear = year;
     }
     @Override
