@@ -10,7 +10,7 @@
   <h1>Books</h1>
   <table>
     <thead>
-      <tr></tr>
+      <tr>
       <th>ID</th>
       <th>Author</th>
       <th>Title</th>
@@ -26,9 +26,12 @@
         <td th:text="${book.isbn}"></td>
         <td th:text="${book.publicationYear}"></td>
         <td><a th:href="@{/delete/{id}(id=${book.id})}">Delete</a></td>
+        <td><a th:href="@{/editBook/{id}(id=${book.id})}">Edit</a></td>
         <tr />
+        
     </tbody>
   </table>
+  <a href="/add">Add book</a>  
 </body>
 
 </html>

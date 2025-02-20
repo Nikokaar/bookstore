@@ -2,20 +2,24 @@ package backends25.bookstore.web;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import backends25.bookstore.BookRepository;
 import backends25.bookstore.domain.Book;
+import jakarta.validation.Valid;
 
 @Controller
-public class bookstoreController {
+public class BooksStoreController {
     
     private BookRepository repository; 
-
-    public bookstoreController(BookRepository repository) {
+    // private final BookRepository bookRepository;
+    public BooksStoreController(BookRepository repository) {
         this.repository = repository;
     }
     
@@ -46,9 +50,28 @@ public class bookstoreController {
     }    
     
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
-    public String deleteBook(@PathVariable("id") Long bookId, Model model) {
+    public String deleteBook(@PathVariable("id") Long bookId) {
     	repository.deleteById(bookId);
         return "redirect:/booklist";
     }  
+
+    @GetMapping("/editBook/{id}")
+    public String editBook(@PathVariable("id") Long id, Model model) {
+        model.addAttribute("editBook", repository.findById(id));
+        return "editbook";
+    }
+
+      @PostMapping("/saveEditedBook")
+    public String saveEditedBook(@Valid @ModelAttribute("editBook") Book book, BindingResult bindingResult, Model model) {
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("editBook", book);
+  
+
+            return "editBook";
+        }
+        repository.save(book);
+        return "redirect:booklist";
+    }
+
     
 }
