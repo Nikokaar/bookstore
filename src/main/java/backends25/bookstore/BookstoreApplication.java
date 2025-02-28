@@ -9,6 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 import backends25.bookstore.domain.Book;
+import backends25.bookstore.domain.Category;
 
 @SpringBootApplication
 public class BookstoreApplication {
@@ -21,12 +22,20 @@ public class BookstoreApplication {
 	}
 	
 	@Bean
-	public CommandLineRunner demoData(BookRepository BookRepository) {
+	public CommandLineRunner demoData(BookRepository BookRepository, CategoryRepository CategoryRepository) {
 		return (args) -> {
 
+
+			// Save a couple of categories
+			Category WarCategory = CategoryRepository.save(new Category("War"));
+			Category FictionCategory = CategoryRepository.save(new Category("Fiction"));
+			Category ScienceCategory = CategoryRepository.save(new Category("Science"));
+
+			
+			// Save a couple of books
 			log.info("save some books");
-			BookRepository.save(new Book("A Farewell to Arms", "Ernest HemingWay", "1232323-21", 20, 1929));
-			BookRepository.save(new Book("Animal Farm", "George Orwell", "2212343-5", 15, 1945));
+			BookRepository.save(new Book("A Farewell to Arms", "Ernest HemingWay", "1232323-21", 20, 1929, WarCategory));
+			BookRepository.save(new Book("Animal Farm", "George Orwell", "2212343-5", 15, 1945, ScienceCategory));
 
 		};
 	}
