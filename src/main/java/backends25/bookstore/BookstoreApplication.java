@@ -36,7 +36,7 @@ public class BookstoreApplication {
 			log.info("save some books");
 			BookRepository.save(new Book("A Farewell to Arms", "Ernest HemingWay", "1232323-21", 20, 1929, WarCategory));
 			BookRepository.save(new Book("Animal Farm", "George Orwell", "2212343-5", 15, 1945, ScienceCategory));
-			BookRepository.save(new Book("Pimeän pyöveli", "Ilkka Remes", "978-951-0-30683-3", 17, 2005, ScienceCategory));
+			BookRepository.save(new Book("Pimeän pyöveli", "Ilkka Remes", "978-951-0-30683-3", 17, 2005, FictionCategory));
 		};
 	}
 

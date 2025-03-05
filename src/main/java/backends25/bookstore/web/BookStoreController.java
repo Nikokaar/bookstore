@@ -25,15 +25,15 @@ import jakarta.validation.Valid;
 
 
 @Controller
-public class BooksStoreController {
+public class BookStoreController {
     @Autowired
     private BookRepository repository; 
-    private static final Logger log = LoggerFactory.getLogger(BooksStoreController.class);
+    private static final Logger log = LoggerFactory.getLogger(BookStoreController.class);
 
     @Autowired
 	private CategoryRepository crepository; 
     // private final BookRepository bookRepository;
-    public BooksStoreController(BookRepository repository) {
+    public BookStoreController(BookRepository repository) {
         this.repository = repository;
     }
     
