@@ -13,11 +13,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import backends25.bookstore.BookRepository;
-import backends25.bookstore.CategoryRepository;
 import backends25.bookstore.domain.Book;
-import backends25.bookstore.BookRepository;
-import backends25.bookstore.CategoryRepository; 
+import backends25.bookstore.domain.BookRepository;
+import backends25.bookstore.domain.CategoryRepository; 
 
 @RestController
 public class BookStoreRestController {

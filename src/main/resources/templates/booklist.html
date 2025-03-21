@@ -7,8 +7,15 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 
+<form a class="btn btn-danger" th:action="@{/logout}" method="post">
+  <input type="submit" value="Uloskirjautuminen" />
+</form>
+
 <body>
   <h1>Books</h1>
+  <div class="col-md-4">
+    <span  sec:authentication="name">Name</span>
+  </div>
   <table class="table table-striped">
     <thead>
       <tr>
@@ -28,13 +35,14 @@
         <td th:text="${book.isbn}"></td>
         <td th:text="${book.publicationYear}"></td>
         <td th:text="${book.category.name}"></td>
-        <td><a class="btn btn-danger" th:href="@{/delete/{id}(id=${book.id})}">Delete</a></td>
+        <td sec:authorize="hasAuthority('ADMIN')"><a class="btn btn-danger" th:href="@{/delete/{id}(id=${book.id})}">Delete</a></td>
         <td><a class="btn btn-success" th:href="@{/editBook/{id}(id=${book.id})}">Edit</a></td>
       </tr>
         
     </tbody>
   </table>
-  <a class="btn btn-success" th:href="@{/add}">Add book</a>  
+  <a class="btn btn-success" th:href="@{/add}">Add book</a> 
+  <a href="index" class="btn btn-primary">Back to main page</a> 
 </body>
 
 </html>

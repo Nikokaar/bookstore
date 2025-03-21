@@ -4,6 +4,11 @@
     <title>BookStore Application</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   </head>
+
+  <form th:action="@{/logout}" method="post">
+    <input type="submit" value="Uloskirjautuminen" />
+  </form>
+  
   <body>
     <h1 th:text="'Welcome to Bookstore application'">Hello</h1>
     <a th:href="@{/booklist}">Booklist</a>

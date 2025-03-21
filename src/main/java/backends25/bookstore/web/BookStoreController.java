@@ -15,12 +15,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-
-
-import backends25.bookstore.BookRepository;
-import backends25.bookstore.CategoryRepository;
 import backends25.bookstore.domain.Book;
+import backends25.bookstore.domain.BookRepository;
 import backends25.bookstore.domain.Category;
+import backends25.bookstore.domain.CategoryRepository;
 import jakarta.validation.Valid;
 
 
