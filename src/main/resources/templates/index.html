@@ -1,16 +1,28 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-  <head>
-    <title>BookStore Application</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-  </head>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+  <title>BookStore Application</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
+</head>
 
-  <form th:action="@{/logout}" method="post">
-    <input type="submit" value="Uloskirjautuminen" />
-  </form>
-  
-  <body>
-    <h1 th:text="'Welcome to Bookstore application'">Hello</h1>
-    <a th:href="@{/booklist}">Booklist</a>
-  </body>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8">
+        <i>Welcome to BookStore application <b sec:authentication="name"></b>, 
+        your role is <b sec:authentication="principal.authorities"></b></i>
+      </div>
+      <div class="col-md-4 text-end">
+        <form th:action="@{/logout}" method="post">
+          <input type="submit" value="Sign Out" class="btn btn-sm btn-danger"/>
+        </form>
+      </div>
+    </div>
+
+    <a class="btn btn-primary" th:href="@{/booklist}">Booklist</a>
+  </div>
+</body>
 </html>
